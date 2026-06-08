@@ -1,13 +1,31 @@
 import React, { useState } from "react";
+import { useAuth } from "../provider/AuthProvider";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const loginHander = async (e) => {
+    try {
+      if (!formData.email || !formData.password) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      await Promise.resolve(()=> setTimeout(() => {}, 1000)); // Simulate async login operation
+      login(formData);
+    } catch (error) {
+      console.error("Login failed", error);
+      alert("Login failed. Please try again.");
+    }
+  };
+
   return (
     <div>
       <h1>Login Page</h1>

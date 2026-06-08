@@ -1,20 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-import { useAuth } from './provider/AuthProvider'
-import Login from './pages/Login'
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Login from "./pages/Login.jsx";
+import Home from "./pages/Home.jsx";
+import Profile from "./pages/Profile.jsx";
+import "./index.css";
+import "./App.css";
+import Register from "./pages/Register.jsx";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: (
+      <Register />
+    )
+  },
+  {
+    path: "profile",
+    element: (
+      <Profile />
+    )
+  }
+]);
 
 function App() {
-  const [count, setCount] = useState(0)
-  const { register } = useAuth()
-
-  return (
-    <>
-     <Login />
-    </>
-  )
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;

@@ -1,0 +1,6 @@
+-- complete login state persist
+-- update profile
+-- implement role ( update register state, use select role)
+-- fully style ( use tailwind)
+-- crate nav bar ( try implement Link from react-router/react-navigation)
+-- use image
